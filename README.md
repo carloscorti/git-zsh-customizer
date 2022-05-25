@@ -26,9 +26,34 @@ To set up this exact customization just downloaad this .zshrc file and copy the 
 
 If you want to change the custmoozation here you have some hints
 
+### Git branch pre text
+
+To change Git branch pre text just set `local GIT_BRANCH_PRETEXT` as it fits better for you (empty string for non Git branch pre text)
+
+#### Example
+
+##### Default
+
+```
+local GIT_BRANCH_PRETEXT=$'on branch -> '
+```
+
+##### Including emoji
+
+```
+local GIT_BRANCH_PRETEXT=$'rocking at \U1F918\ '
+```
+
+##### No Git branch pre text
+
+```
+local GIT_BRANCH_PRETEXT=$''
+```
+
 ### Change colors
 
-Colors are in between `%F{color}%--somnething-here--f% `, so everytime you want to change a color, just replace color for wichever color you want. [Here you have color references ](https://www.tweaking4all.com/software/macosx-software/xterm-color-cheat-sheet/)
+Colors are in between `%F{color}%--somnething-here--f% `, so everytime you want to change a color, just replace color for wichever color you want.<br/>
+[Here you have color references ](https://www.tweaking4all.com/software/macosx-software/xterm-color-cheat-sheet/)
 
 #### Example
 
@@ -39,12 +64,13 @@ local FOLDER_PATH='%B%F{84}%20~%f%b'
 
 ### Highlighted texts backgrounds
 
-Same as only colors, background colors can also be chnaged, you can idenfify bacKground highlight as `%K{color}%--somnething-here--k% `. Again [here you have color references ](https://www.tweaking4all.com/software/macosx-software/xterm-color-cheat-sheet/) just in case
+Same as only colors, background colors can also be chnaged, you can idenfify bacKground highlight as `%K{color}%--somnething-here--k% `.<br/>
+Again [here you have color references ](https://www.tweaking4all.com/software/macosx-software/xterm-color-cheat-sheet/) just in case
 
 #### Example
 
 ```
-echo "%F{white}on branch -> %K{229} %B%F{232}"%1v"%f%b %k"
+echo "%F{white}${GIT_BRANCH_PRETEXT}%K{229} %B%F{232}"%1v"%f%b %k"
 ```
 
 ### Icons
@@ -73,9 +99,9 @@ vcs_info_wrapper_branch_name() {
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
     echo ""
   elif [[ ${psvar[1]} == "BRANCH-YOU-WHANT-HERE" ]]; then
-    echo "%F{white}on branch -> %K{9} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{9} %B%F{232}"%1v"%f%b %k"
   else
-    echo "%F{white}on branch -> %K{229} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{229} %B%F{232}"%1v"%f%b %k"
   fi
 }
 ```
@@ -89,9 +115,9 @@ vcs_info_wrapper_branch_name() {
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
     echo ""
   elif [[ ${psvar[1]} == "BRANCH-YOU-WHANT-HERE" || ${psvar[1]} == "OTHER-BRANCH-YOU-WHANT-HERE" ]]; then
-    echo "%F{white}on branch -> %K{9} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{9} %B%F{232}"%1v"%f%b %k"
   else
-    echo "%F{white}on branch -> %K{229} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{229} %B%F{232}"%1v"%f%b %k"
   fi
 }
 ```
@@ -125,4 +151,4 @@ vcs_info_wrapper_branch_name() {
 
 ## Author
 
-- **Carlos Corti**
+- **Carlos Corti** 🤘🤘
