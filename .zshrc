@@ -7,6 +7,7 @@ local SKULL_ICON=$'\U1F480'
 local GIT_UNSTAGED_ICON=$'\U274C'
 local GIT_UNTRACKED_FILES_ICON=$'\U1F69C'
 local GIT_STAGED_ICON=$'\U2705'
+local GIT_BRANCH_PRETEXT=$'on branch -> '
 
 # Load version control information
 autoload -Uz vcs_info
@@ -40,9 +41,9 @@ vcs_info_wrapper_branch_name() {
   if [[ "${vcs_info_msg_0_}" == "" ]]; then
     echo ""
   elif [[ ${psvar[1]} == "integration" ]]; then
-    echo "%F{white}on branch -> %K{9} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{9} %B%F{232}"%1v"%f%b %k"
   else
-    echo "%F{white}on branch -> %K{229} %B%F{232}"%1v"%f%b %k"
+    echo "%F{white}${GIT_BRANCH_PRETEXT}%K{229} %B%F{232}"%1v"%f%b %k"
   fi
 }
 
@@ -75,4 +76,3 @@ setopt PROMPT_SUBST
 
 PROMPT='${USER_NAME} ${SKULL_ICON} ${FOLDER_PATH} $(vcs_info_wrapper)${NEWLINE}${DOLAR_SIGN} '
 #### terminal customization end
-
